@@ -1,0 +1,29 @@
+<div class="dialog-container">
+  <!-- <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="data.song.title"/>
+  </mat-form-field> -->
+
+  <h2>
+    {{data.song.title}}
+  </h2>
+  <p>60 BPM, 3:23, <button mat-button>Autoscroll</button></p>
+  <pre class="song-text">
+    {{data.song.text}}
+  </pre>
+
+  <!-- <mat-form-field>
+    <mat-label>Text</mat-label>
+    <section class="song-text">
+      <textarea matInput [(ngModel)]="data.song.text"></textarea>
+    </section>
+  </mat-form-field> -->
+</div>
+<!-- <div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="{ song: data.song }">OK</button>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button *ngIf="data.enableDelete" mat-fab color="primary" aria-label="Delete" [mat-dialog-close]="{song: data.song, delete: true}">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div> -->
+

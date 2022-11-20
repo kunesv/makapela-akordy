@@ -1,0 +1,55 @@
+mat-toolbar {
+  margin-bottom: 16px;
+}
+mat-toolbar span {
+  margin-left: 16px;
+}
+mat-toolbar .logo {
+  background-color: #f03e25;
+  display: flex;
+  height: inherit;
+  align-items: center;
+  padding: 0 8px;
+  margin: 0 0 0 -16px;
+}
+.main {
+  max-width: 1400px;
+  margin: auto;
+}
+.content-wrapper {
+  margin: 0 8px;
+
+}
+.container-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 16px;
+  column-gap: 16px;
+}
+.container {
+  flex: 1;
+}
+.list {
+  border: 1px dashed #ccc;
+  min-height: 64px;
+  border-radius: 4px;
+  box-shadow: 0 0;
+  padding: 0px 8px;
+  height: calc(100% - 48px);
+}
+app-new-song {
+  margin-bottom: 32px;
+}
+.empty-label {
+  font-size: 1.2em;
+  padding-top: 16px;
+  text-align: center;
+  opacity: .2;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms;
+}
+.cdk-drag-placeholder {
+  opacity: 0;
+}

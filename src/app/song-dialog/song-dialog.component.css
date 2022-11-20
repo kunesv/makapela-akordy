@@ -1,0 +1,15 @@
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 16px 0;
+}
+.dialog-container > * {
+  width: 100%;
+}
+.song-text {
+  flex: 1;
+  font-family: monospace;
+}
+.song-text textarea {
+  min-height: 20em;
+}
