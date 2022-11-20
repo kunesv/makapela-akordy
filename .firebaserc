@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "makapelaakordy": {
+      "hosting": {
+        "makapela-akordy": [
+          "makapelaakordy"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "makapelaakordy"
+  }
+}
