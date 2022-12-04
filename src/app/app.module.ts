@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+// import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+// import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SongComponent } from './song/song.component';
@@ -20,6 +20,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { FormsModule } from "@angular/forms";
 
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFirestoreModule, USE_EMULATOR as FIRESTORE_EMULATOR } from "@angular/fire/compat/firestore";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +31,8 @@ import { FormsModule } from "@angular/forms";
   ],
   imports: [
     BrowserModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
+    // provideFirebaseApp(() => initializeApp(environment.firebase)),
+    // provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
 
     MatButtonModule,
@@ -41,8 +44,16 @@ import { FormsModule } from "@angular/forms";
 
     FormsModule,
     DragDropModule,
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: FIRESTORE_EMULATOR,
+      useValue: environment.production ? undefined : ['localhost', 8080]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

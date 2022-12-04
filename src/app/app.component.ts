@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { SongDialogResult } from './song-dialog/song-dialog-result';
 import { SongDialogComponent } from './song-dialog/song-dialog.component';
 import { Song } from './song/song';
 import { CdkDragDrop, transferArrayItem, moveItemInArray } from "@angular/cdk/drag-drop";
 import { MatDialog } from "@angular/material/dialog";
 
-import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/compat/firestore";
+
+const getObservable = (collection: AngularFirestoreCollection<Song>) => {
+  const subject = new BehaviorSubject<Song[]>([])
+  collection.valueChanges({idField: 'id'}).subscribe((val:Song[]) => {
+    subject.next(val)
+  })
+  return subject
+}
 
 @Component({
   selector: 'app-root',
@@ -14,8 +22,8 @@ import { AngularFirestore } from "@angular/fire/compat/firestore";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  songs = this.store.collection('songs').valueChanges({idField: 'id'}) as Observable<Song[]>
-  play = this.store.collection('play').valueChanges({idField: 'id'}) as Observable<Song[]>
+  songs = getObservable(this.store.collection('songs')) as Observable<Song[]>
+  play = getObservable(this.store.collection('play')) as Observable<Song[]>
 
   constructor(private dialog: MatDialog, private store: AngularFirestore) {}
 

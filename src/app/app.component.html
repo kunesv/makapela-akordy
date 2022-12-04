@@ -1,12 +1,12 @@
 <mat-toolbar color="primary">
-  <span class="logo">má kapela</span>
+  <span class="logo">makapela</span>
   <span>Akordy</span>
 </mat-toolbar>
 <div class="main">
   <div class="content-wrapper">
-    <button mat-button (click)="newSong()">
+    <!-- <button mat-button (click)="newSong()">
       <mat-icon>add</mat-icon> Add Song
-    </button>
+    </button> -->
 
     <div class="container-wrapper">
       <div class="container">
@@ -15,7 +15,7 @@
           [cdkDropListData]="songs | async"
           [cdkDropListConnectedTo]="[playList]"
           (cdkDropListDropped)="drop($event)"
-          cdkDropListSortingDisabled
+
           class="list">
           <p class="empty-label" *ngIf="(songs | async)?.length === 0">Empty</p>
           <app-song (edit)="editSong('songs', $event)" *ngFor="let song of songs | async" cdkDrag [song]="song"></app-song>
